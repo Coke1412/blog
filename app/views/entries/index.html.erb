@@ -1,0 +1,58 @@
+<div>
+    <h1>Todas las entradas</h1>
+   <div>
+        <h3>Entradas en curso</h3>
+
+    <div>
+        <table>
+            <thead>
+                <th>Fecha creación</th>
+                <th>Título</th>
+                <th>Contenido</th>
+                <th>Estado</th>
+            </thead>
+
+            <% @entry_open.each do |entry| %>
+                <tbody>
+                    <td> <%= entry.created_at %> </td>
+                    <td> <%= entry.title %> </td>
+                    <td> <%= entry.content %> </td>
+                    <td> <%= entry.status %> </td>
+                    <td> <%= link_to 'editar', edit_entry_path(entry) %> </td>
+                    <td> <%= link_to 'eliminar', delete_entry_path(entry), method: :delete, data: {confirm: 'tas segurillo?'} %></td>
+                </tbody>
+            <% end  %>
+        </table>
+      </div>
+    </div>
+
+   
+   <div>
+        <h3>Entradas cerrada</h3>
+
+    <div>
+        <table>
+            <thead>
+                <th>Fecha creación</th>
+                <th>Título</th>
+                <th>Contenido</th>
+                <th>Estado</th>
+            </thead>
+
+            <% @entry_close.each do |entry| %>
+                <tbody>
+                    <td> <%= entry.created_at %> </td>
+                    <td> <%= entry.title %> </td>
+                    <td> <%= entry.content %> </td>
+                    <td> <%= entry.status %> </td>
+                    <td> <%= link_to 'editar', edit_entry_path(entry) %> </td>
+                    <td> <%= link_to 'eliminar', delete_entry_path(entry), method: :delete, data: {confirm: 'tas segurillo?'} %></td>
+                </tbody>
+            <% end  %>
+        </table>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Nueva entrada', new_entries_path %>
+
